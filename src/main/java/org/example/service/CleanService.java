@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class CleanService {
 
-    private ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
 
     public CleanService(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;

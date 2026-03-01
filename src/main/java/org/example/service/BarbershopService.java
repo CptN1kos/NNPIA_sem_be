@@ -19,9 +19,9 @@ import java.util.List;
 @Service
 public class BarbershopService {
 
-    private BarbershopRepository barbershopRepository;
+    private final BarbershopRepository barbershopRepository;
 
-    private ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
 
     public BarbershopService(BarbershopRepository barbershopRepository, ReservationRepository reservationRepository) {
         this.barbershopRepository = barbershopRepository;

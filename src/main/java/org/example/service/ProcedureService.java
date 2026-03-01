@@ -16,9 +16,9 @@ import java.util.Optional;
 @Service
 public class ProcedureService {
 
-    private ProcedureRepository procedureRepository;
+    private final ProcedureRepository procedureRepository;
 
-    private ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
 
     public ProcedureService(ProcedureRepository procedureRepository, ReservationRepository reservationRepository) {
         this.procedureRepository = procedureRepository;

@@ -17,11 +17,11 @@ import java.util.Optional;
 @Service
 public class ReservationService {
 
-    private ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
 
-    private ReservationPagingRepository reservationPagingRepository;
+    private final ReservationPagingRepository reservationPagingRepository;
 
-    private CleanService cleanService;
+    private final CleanService cleanService;
 
     public ReservationService(ReservationRepository reservationRepository, ReservationPagingRepository reservationPagingRepository, CleanService cleanService) {
         this.reservationRepository = reservationRepository;
