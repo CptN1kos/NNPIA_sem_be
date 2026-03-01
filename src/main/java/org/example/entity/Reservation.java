@@ -6,10 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.enums.ReservationStatus;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 

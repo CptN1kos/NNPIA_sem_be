@@ -11,13 +11,15 @@ import java.util.Date;
 @Component
 public class JwtService {
 
-    private final String secretKey = "mysecretkey";
+    private final String secretKey = "myseztfzatfxzjqghgf6874uicresrezewzrewzersgbfdeterjkretkey";
     private final long accessTokenValidity = 60 * 60 * 1000;
 
     private final JwtParser jwtParser;
 
     public JwtService() {
-        this.jwtParser = Jwts.parser().setSigningKey(secretKey);
+        this.jwtParser = Jwts.parser()
+                .setSigningKey(secretKey)
+                .build();
     }
 
     public String createToken(UserLogin userLogin) {

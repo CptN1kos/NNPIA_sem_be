@@ -9,7 +9,8 @@ import org.example.repository.ProcedureRepository;
 import org.example.repository.ReservationRepository;
 import org.example.service.ProcedureService;
 import org.example.service.ReservationService;
-import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -81,7 +82,7 @@ public class Tests {
         procedureService.updateProcedure(procedureDto);
 
         Procedure updatedProcedure = procedureService.findByName("TestProcedure");
-        Assert.assertNotEquals(procedure.getPrice(), updatedProcedure.getPrice());
+        assertNotEquals(procedure.getPrice(), updatedProcedure.getPrice());
     }
 
     @Test
@@ -89,6 +90,6 @@ public class Tests {
 
         List<Reservation> procedureList = reservationRepository.findReservationsByProcedureId(procedureService.findByName("TestProcedure").getId());
         reservationService.confirmReservation(procedureList.get(0).getId());
-        Assert.assertEquals(procedureList.get(0).getStatus(), ReservationStatus.CREATED);
+        assertEquals(procedureList.get(0).getStatus(), ReservationStatus.CREATED);
     }
 }

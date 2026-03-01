@@ -3,8 +3,8 @@ package org.example.entity;
 import lombok.*;
 import org.example.enums.ProcedureValidity;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Getter
 @Setter
