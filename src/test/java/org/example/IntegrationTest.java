@@ -40,7 +40,7 @@ public class IntegrationTest {
     public void cleanUp() {
         Procedure testProcedure = procedureRepository.findByName("Test procedure");
         List<Reservation> reservationByBeautyProcedure = reservationRepository.findReservationsByProcedureId(testProcedure.getId());
-        reservationRepository.deleteById(reservationByBeautyProcedure.get(0).getId());
+        reservationRepository.deleteById(reservationByBeautyProcedure.getFirst().getId());
         procedureRepository.deleteById(testProcedure.getId());
     }
 

@@ -78,7 +78,7 @@ public class Tests {
         procedureDto.setName(procedure.getName());
         procedureDto.setPrice(500);
         procedureDto.setDescription(procedure.getDescription());
-        procedureDto.setChecked(procedure.getStatus().equals(ProcedureValidity.ACTIVE) ? true : false);
+        procedureDto.setChecked(procedure.getStatus().equals(ProcedureValidity.ACTIVE));
         procedureService.updateProcedure(procedureDto);
 
         Procedure updatedProcedure = procedureService.findByName("TestProcedure");
