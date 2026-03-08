@@ -5,6 +5,7 @@ import org.example.enums.ProcedureValidity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @Setter
@@ -28,11 +29,15 @@ public class Procedure {
 
     @NotNull
     @Column
+    private Double length;
+
+    @NotNull
+    @Column
     private Integer price;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(32) default 'INVALID'")
+    @ColumnDefault("'INACTIVE'")
     private ProcedureValidity status;
 
 }

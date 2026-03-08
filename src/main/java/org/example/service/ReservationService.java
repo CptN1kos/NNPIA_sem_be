@@ -8,10 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
@@ -95,6 +92,10 @@ public class ReservationService {
 
     public Page<Reservation> findAllByReservationDateAndStatus(Date reservationDate, ReservationStatus status, Pageable pageVariable) {
         return reservationPagingRepository.findAllByReservationDateAndStatus(reservationDate, status, pageVariable);
+    }
+
+    public Page<Reservation> findAllByReservationDateAndStatuses(Date reservationDate, Collection<ReservationStatus> status, Pageable pageVariable) {
+        return reservationPagingRepository.findAllByReservationDateAndStatusIn(reservationDate, status, pageVariable);
     }
 
     private Reservation findById(Integer id) {

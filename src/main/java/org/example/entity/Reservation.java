@@ -53,4 +53,9 @@ public class Reservation {
     @NotNull
     @Column
     private Timestamp createdTime;
+
+    @ManyToOne
+    @JoinColumn(name = "barbershop_id")
+    private Barbershop barbershop;
+
 }

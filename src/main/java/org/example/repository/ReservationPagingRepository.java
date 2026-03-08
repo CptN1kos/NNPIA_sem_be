@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import java.util.Collection;
 import java.util.Date;
 
 public interface ReservationPagingRepository extends PagingAndSortingRepository<Reservation, Integer> {
@@ -14,5 +15,7 @@ public interface ReservationPagingRepository extends PagingAndSortingRepository<
     Page<Reservation> findAllByStatus(ReservationStatus status, Pageable pageVariable);
 
     Page<Reservation> findAllByReservationDateAndStatus(Date reservationDate, ReservationStatus status, Pageable pageVariable);
+
+    Page<Reservation> findAllByReservationDateAndStatusIn(Date reservationDate, Collection<ReservationStatus> status, Pageable pageVariable);
 
 }

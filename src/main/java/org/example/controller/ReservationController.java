@@ -3,18 +3,19 @@ package org.example.controller;
 import org.example.dto.*;
 import org.example.entity.Procedure;
 import org.example.entity.Reservation;
+import org.example.enums.Constants;
 import org.example.enums.ReservationStatus;
 import org.example.service.BarbershopService;
 import org.example.service.ProcedureService;
 import org.example.service.ReservationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
+
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -124,13 +125,7 @@ public class ReservationController {
     public ResponseEntity<?> getAllByDateAndStatus(@DateTimeFormat(pattern = "yyyy-MM-dd") Date date, ReservationStatus status, Pageable pageable) {
         Page<Reservation> pagedResult;
         if (status.equals(ReservationStatus.ALL)) {
-            Page<Reservation> pageCreated = reservationService.findAllByReservationDateAndStatus(date, ReservationStatus.CREATED, pageable);
-            Page<Reservation> pagedConfirmed = reservationService.findAllByReservationDateAndStatus(date, ReservationStatus.CONFIRMED, pageable);
-            Page<Reservation> pagedDone = reservationService.findAllByReservationDateAndStatus(date, ReservationStatus.DONE, pageable);
-            Page<Reservation> pagedCancelled = reservationService.findAllByReservationDateAndStatus(date, ReservationStatus.CANCELED, pageable);
-            Page<Reservation> pagedLocked = reservationService.findAllByReservationDateAndStatus(date, ReservationStatus.LOCKED, pageable);
-            List<Reservation> merged = mergePages(pageCreated, pagedConfirmed, pagedDone, pagedCancelled, pagedLocked);
-            pagedResult = new PageImpl<>(merged, pageable, merged.size());
+            pagedResult = reservationService.findAllByReservationDateAndStatuses(date, Constants.allStatuses, pageable);
         } else {
             pagedResult = reservationService.findAllByReservationDateAndStatus(date, status, pageable);
         }

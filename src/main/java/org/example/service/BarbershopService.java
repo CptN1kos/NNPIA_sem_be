@@ -3,7 +3,7 @@ package org.example.service;
 import org.example.dto.TimeSlotDto;
 import org.example.entity.Barbershop;
 import org.example.entity.Reservation;
-import org.example.enums.ReservationStatus;
+import org.example.enums.Constants;
 import org.example.repository.BarbershopRepository;
 import org.example.repository.ReservationRepository;
 import org.springframework.stereotype.Service;
@@ -39,9 +39,8 @@ public class BarbershopService {
         if (localDateTime.getDayOfWeek() == DayOfWeek.SATURDAY || localDateTime.getDayOfWeek() == DayOfWeek.SUNDAY) {
             return new ArrayList<>();
         }
-        List<Reservation> reservations = reservationRepository.findReservationsByReservationDateAndStatus(date, ReservationStatus.CONFIRMED);
-        reservations.addAll(reservationRepository.findReservationsByReservationDateAndStatus(date, ReservationStatus.CREATED));
-        reservations.addAll(reservationRepository.findReservationsByReservationDateAndStatus(date, ReservationStatus.LOCKED));
+        List<Reservation> reservations = reservationRepository.findReservationsByBarbershopIdAndReservationDateAndStatusIn(
+                barbershopId, date, Constants.bookedStatuses);
         LocalTime openingTime = barbershop.getOpeningTime();
         LocalTime closingTime = barbershop.getClosingTime();
 
