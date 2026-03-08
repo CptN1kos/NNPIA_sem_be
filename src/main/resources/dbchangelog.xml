@@ -167,4 +167,31 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="12" author="Niko">
+        <addColumn tableName="reservation">
+            <column name="phone" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="13" author="Niko">
+        <addColumn tableName="reservation">
+            <column name="barbershop_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="14" author="Niko">
+        <addForeignKeyConstraint baseTableName="reservation"
+                                 baseColumnNames="barbershop_id"
+                                 referencedTableName="barbershop"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_reservation_barbershop"/>
+    </changeSet>
+
 </databaseChangeLog>

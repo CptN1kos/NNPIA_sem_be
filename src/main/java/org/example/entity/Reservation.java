@@ -8,6 +8,7 @@ import org.example.enums.ReservationStatus;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+
 import java.sql.Timestamp;
 import java.time.LocalTime;
 import java.util.Date;
@@ -27,6 +28,14 @@ public class Reservation {
     @NotNull
     @Column
     private String email;
+
+    @NotNull
+    @Column
+    private String name;
+
+    @NotNull
+    @Column
+    private String phone;
 
     @NotNull
     @Column
